@@ -1,8 +1,9 @@
 import { Console, MissionUtils } from "@woowacourse/mission-utils";
+import { ERROR_MESSAGE, GAME_MESSAGE } from "../constants/messages";
 
 class App {
     async play() {
-        Console.print("숫자 야구게임을 시작합니다.")
+        Console.print(GAME_MESSAGE.START)
         let isOut = false
 
         function randomNumberMaker() {
@@ -17,9 +18,9 @@ class App {
         }
 
         function validation(number) {
-            if (isNaN(Number(number))) throw new Error("[ERROR] 숫자를 입력하지 않았습니다.");
-            if (number.length !== 3) throw new Error("[ERROR] 숫자의 길이가 3이상이지 않습니다.");
-            if (number[0] === number[1] || number[1] === number[2] || number[2] === number[0]) throw new Error("[ERROR] 동일한 숫자가 입력이 되었습니다.");
+            if (isNaN(Number(number))) throw new Error(ERROR_MESSAGE.TYPE);
+            if (number.length !== 3) throw new Error(ERROR_MESSAGE.LENGTH);
+            if (number[0] === number[1] || number[1] === number[2] || number[2] === number[0]) throw new Error(ERROR_MESSAGE.DUPLICATION);
         }
 
         function baseGame(randomNumber, pickNumber) {
@@ -28,7 +29,7 @@ class App {
 
             if (randomNumber === pickNumber) {
                 isOut = true;
-                return "3스트라이크"
+                return GAME_MESSAGE.ALERT_STRIKE(3)
             }
 
 
@@ -38,24 +39,24 @@ class App {
                 }
             }
 
-            if (!strikeCount && !ballCount) return "낫싱";
-            if (!strikeCount && ballCount) return `${ballCount}볼`;
-            if (strikeCount && !ballCount) return `${strikeCount}스트라이크`;
+            if (!strikeCount && !ballCount) return GAME_MESSAGE.ALERT_NOT;
+            if (!strikeCount && ballCount) return GAME_MESSAGE.ALERT_BALL(ballCount);
+            if (strikeCount && !ballCount) return GAME_MESSAGE.ALERT_STRIKE(strikeCount);
 
-            return `${ballCount}볼 ${strikeCount}스트라이크`
+            return GAME_MESSAGE.ALERT_BOTH(ballCount, strikeCount)
         }
 
         const randomNumber = randomNumberMaker();
 
         while (!isOut) {
-            const pickNumber = await Console.readLineAsync("숫자를 입력해주세요 : ")
+            const pickNumber = await Console.readLineAsync(GAME_MESSAGE.INPUT_COUNT)
             validation(pickNumber);
             Console.print(baseGame(randomNumber, pickNumber));
         }
 
-        Console.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        Console.print(GAME_MESSAGE.END)
 
-        if (await Console.readLineAsync("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.") === '1') await this.play();
+        if (await Console.readLineAsync(GAME_MESSAGE.RE_GAME) === '1') await this.play();
     }
 }
 
