@@ -8,4 +8,4 @@
 
 ### 2주차 미션
 
-[자동차 경주](https://github.com/woowacourse-precourse/java-racingcar-6)
+[자동차 경주](https://github.com/woowacourse-precourse/javascript-racingcar-6)
