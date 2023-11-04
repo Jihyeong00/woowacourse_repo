@@ -1,29 +1,23 @@
 import { Console } from "@woowacourse/mission-utils";
-
 class Car {
-    carName = "";
-    position = "";
-
     constructor(carName) {
-        this.setCarName(carName)
+        this.carName = carName;
+        this.position = 0;
     }
-
-    setCarName(carName) {
-        this.carName = carName
-    }
-
     getCarName() {
-        return this.carName
+        return this.carName;
     }
 
     getPosition() {
-        return this.position
+        return this.position;
     }
 
     move(isMove) {
-        isMove ? this.position += '-' : ''
-        Console.print(`${this.carName} : ${this.position}`)
+        if(isMove){
+            this.position += 1;
+        }
+        Console.print(this.getCarName() + " : " +  "-".repeat(this.position))
     }
 }
 
-export default Car
+export default Car;
