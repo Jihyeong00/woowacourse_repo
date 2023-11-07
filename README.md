@@ -9,3 +9,7 @@
 ### 2주차 미션
 
 [자동차 경주](https://github.com/woowacourse-precourse/javascript-racingcar-6)
+
+### 3주차 미션
+
+[로또](https://github.com/woowacourse-precourse/javascript-lotto-6)
