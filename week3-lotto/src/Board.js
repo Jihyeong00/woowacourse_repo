@@ -21,11 +21,11 @@ class Board {
 
   printResult(ranks) {
     Console.print(MESSAGE.BOARD.result);
-    for (let i = 1; i < 6; i++) {
+    Array.from({ length: 5 }).forEach((_, i) => {
       Console.print(
-        MESSAGE.BOARD[`${i}th`](ranks.filter((v) => v === i).length),
+        MESSAGE.BOARD[`${i + 1}th`](ranks.filter((v) => v === i + 1).length),
       );
-    }
+    });
   }
 
   printRevenue(ranks) {

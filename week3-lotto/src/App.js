@@ -15,8 +15,8 @@ class App {
       user.getCount(),
     );
     const resultBoard = new Board();
-    resultBoard.printResult(checkManager.getRanks())
-    resultBoard.printRevenue(checkManager.getRanks())
+    resultBoard.printResult(checkManager.getRanks());
+    resultBoard.printRevenue(checkManager.getRanks());
   }
 }
 
