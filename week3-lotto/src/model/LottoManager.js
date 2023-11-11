@@ -1,8 +1,9 @@
+import { numberCheck, numbersCheck } from '../util/validation.js';
+import { LOTTO_NUMBER } from '../constants/policy.js';
+import { MESSAGE } from '../constants/messages.js';
+import inputView from '../view/inputView.js';
+import outputView from '../view/outputView.js';
 import Lotto from './Lotto.js';
-import { MESSAGE } from './constants/messages.js';
-import { numberCheck, numbersCheck } from './validation.js';
-import { LOTTO_NUMBER } from './constants/policy.js';
-import { Console } from '@woowacourse/mission-utils';
 
 class LottoManager extends Lotto {
   bonusNumber = 0;
@@ -33,33 +34,24 @@ class LottoManager extends Lotto {
     return this.bonusNumber;
   }
 
-  static async readLuckyNumber() {
-    const luckyNumber = await Console.readLineAsync(
-      MESSAGE.LOTTO.setLuckyNumber,
-    );
-    return luckyNumber.split(',').map((v) => Number(v));
-  }
-
   static async readSetLuckyNumber() {
     try {
-      return new LottoManager(await LottoManager.readLuckyNumber());
+      return new LottoManager(
+        (await inputView.readLuckyNumber()).split(',').map((v) => Number(v)),
+      );
     } catch (err) {
-      Console.print(err.message);
+      outputView.printError(err);
       await LottoManager.readSetLuckyNumber();
     }
   }
 
-  static async readBonusNumber() {
-    return await Console.readLineAsync(MESSAGE.LOTTO.setBonusNumber);
-  }
-
   async readAndSetBonusNumber(luckyNumber) {
     try {
-      const bonusNumber = await LottoManager.readBonusNumber();
+      const bonusNumber = await inputView.readBonusNumber();
       this.#bonusNumberValidation(luckyNumber, bonusNumber);
       this.setBonusNumber(bonusNumber);
     } catch (err) {
-      Console.print(err.message);
+      outputView.printError(err);
       await this.readAndSetBonusNumber(luckyNumber);
     }
   }

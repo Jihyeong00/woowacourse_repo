@@ -1,4 +1,4 @@
-import {numberCheck} from "../src/validation.js";
+import {numberCheck} from "../src/util/validation.js";
 import {LOTTO_NUMBER} from "../src/constants/policy.js";
 import {MESSAGE} from "../src/constants/messages.js";
 

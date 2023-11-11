@@ -1,6 +1,6 @@
-import { numberCheck, numbersCheck } from './validation.js';
-import { LOTTO_NUMBER } from './constants/policy.js';
-import { MESSAGE } from './constants/messages.js';
+import { numberCheck, numbersCheck } from '../util/validation.js';
+import { MESSAGE } from '../constants/messages.js';
+import { LOTTO_NUMBER } from '../constants/policy.js';
 
 class Lotto {
   #numbers;

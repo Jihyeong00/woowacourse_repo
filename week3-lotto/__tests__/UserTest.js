@@ -1,4 +1,4 @@
-import User from "../src/User.js";
+import User from "../src/model/User.js";
 import {MissionUtils} from "@woowacourse/mission-utils";
 
 const mockQuestions = (inputs) => {
@@ -24,7 +24,7 @@ describe("유저 클래스 테스트", () => {
         const log = "8개를 구매했습니다."
 
         const user = new User();
-        const money = await user.readUserMoney();
+        const money = await user.readAndSetUserMoney();
         user.setUserMoney(money);
 
         expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(log));
