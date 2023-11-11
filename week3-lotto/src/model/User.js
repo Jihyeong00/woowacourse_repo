@@ -5,6 +5,7 @@ import outputView from '../view/outputView.js';
 import inputView from '../view/inputView.js';
 
 class User {
+  #temp = true
   constructor() {
     this.count = 0;
   }
@@ -24,13 +25,15 @@ class User {
   }
 
   async readAndSetUserMoney() {
-    try {
-      const money = await inputView.readUserMoney();
-      this.#validation(money);
-      this.setUserMoney(money);
-    } catch (err) {
-      outputView.printError(err);
-      await this.readAndSetUserMoney();
+    while (this.#temp) {
+      try {
+        const money = await inputView.readUserMoney();
+        this.#validation(money);
+        this.#temp = false
+        this.setUserMoney(money);
+      } catch (err) {
+        outputView.printError(err);
+      }
     }
   }
 }
