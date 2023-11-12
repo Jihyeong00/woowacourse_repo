@@ -1,4 +1,4 @@
-import LottoManager from "../src/LottoManager.js";
+import LottoManager from "../src/model/LottoManager.js";
 import {MissionUtils} from "@woowacourse/mission-utils";
 import {MESSAGE} from "../src/constants/messages.js";
 

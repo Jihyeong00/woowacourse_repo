@@ -1,5 +1,5 @@
 import {MissionUtils} from "@woowacourse/mission-utils";
-import CheckManager from "../src/CheckManager.js";
+import CheckManager from "../src/model/CheckManager.js";
 
 const mockRandoms = (numbers) => {
     MissionUtils.Random.pickUniqueNumbersInRange = jest.fn();
