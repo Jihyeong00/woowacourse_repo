@@ -8,7 +8,7 @@ const randomNumberMaker = () => {
             randomNumberArray.push(randomNumber);
         }
     }
-    return randomNumberArray.join('');
+    return Number(randomNumberArray.join(''));
 }
 
 export default randomNumberMaker
