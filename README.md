@@ -13,3 +13,7 @@
 ### 3주차 미션
 
 [로또](https://github.com/woowacourse-precourse/javascript-lotto-6)
+
+### 4주차 미션
+
+[크리스마스 프로모션](https://github.com/woowacourse-precourse/javascript-christmas-6)
