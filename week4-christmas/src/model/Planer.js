@@ -1,6 +1,6 @@
 import EventList from '../service/planer/EventList.js';
 import { total } from '../util/array-helper.js';
-import { EVENT_MIN_PRICE } from '../constants/policy.js';
+import { EVENT_MENU, EVENT_MIN_PRICE } from '../constants/policy.js';
 
 class Planer {
   #visitDateInformation;
@@ -41,21 +41,15 @@ class Planer {
     this.#eventList.weekDayEvent();
     this.#eventList.weekEndEvent();
     this.#eventList.specialEvent();
-    this.#eventList.wineEvent();
+    this.#eventList.presentEvent();
   }
 
   getBadge() {
     const salePrice = this.getDiscountTotal();
-    if (salePrice >= 20000) {
-      return '산타';
-    }
-    if (salePrice >= 10000) {
-      return '트리';
-    }
-    if (salePrice >= 5000) {
-      return '별';
-    }
-    return '없음';
+    return (
+      EVENT_MENU.VALUE.badge.find((check) => check.value <= salePrice)?.name ??
+      '없음'
+    );
   }
 }
 

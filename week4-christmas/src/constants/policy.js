@@ -17,5 +17,52 @@ export const EVENT_MIN_PRICE = 10000;
 
 export const WINE_EVENT_MIN_PRICE = 120000;
 
+export const DATE = {
+  year: 2023,
+  month: 12,
+  christmas: 25,
+};
+
 export const MAX_ORDER_COUNT = 20;
 export const MIN_ORDER_COUNT = 1;
+
+export const EVENT_NAME = {
+  weekDay: '평일 할인',
+  weekEnd: '주말 할인',
+  christmas: '크리스마스 디데이 할인',
+  special: '특별 할인',
+  present: '증정 이벤트',
+};
+
+export const EVENT_MENU = {
+  TYPE: {
+    weekDay: '디저트',
+    weekEnd: '메인',
+  },
+  VALUE: {
+    present: '샴페인',
+    badge: [
+      { name: '산타', value: 20000 },
+      { name: '트리', value: 10000 },
+      { name: '별', value: 5000 },
+    ],
+  },
+};
+
+export const SALE_PRICE = {
+  christmasInitialValue: 1000,
+  christmasIncreaseValue: 100,
+  weekEnd: DATE.year,
+  weekDay: DATE.year,
+  special: 1000,
+};
+
+export const DAY = {
+  SUN: 0,
+  MON: 1,
+  THY: 2,
+  WED: 3,
+  THU: 4,
+  FRI: 5,
+  SAT: 6,
+};

@@ -11,14 +11,18 @@ class OrderList {
   #orderList;
 
   constructor(menus) {
-    const inputMenu = menus.map((menu) => {
+    const inputMenu = this.#setMenuWithMenuInfo(menus);
+    this.#validate(inputMenu);
+    this.#orderList = inputMenu;
+  }
+
+  #setMenuWithMenuInfo(menus) {
+    return menus.map((menu) => {
       return {
         ...MENUS.find((item) => item.name === menu.name),
         count: menu.count,
       };
     });
-    this.#validate(inputMenu);
-    this.#orderList = inputMenu;
   }
 
   #validate(menus) {

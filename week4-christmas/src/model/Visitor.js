@@ -7,6 +7,13 @@ class Visitor {
   #visitInfo;
   #orderList;
 
+  #menuFormatter(StringOrderList) {
+    return StringOrderList.split(',').map((OrderListInput) => {
+      const menu = OrderListInput.split('-');
+      return { name: menu[0], count: Number(menu[1]) };
+    });
+  }
+
   async readVisitorDay() {
     try {
       const day = await inputView.readDate();
@@ -20,12 +27,7 @@ class Visitor {
 
   async readOrderList() {
     try {
-      const orderListInputs = (await inputView.readMenu())
-        .split(',')
-        .map((OrderListInput) => {
-          const menu = OrderListInput.split('-');
-          return { name: menu[0], count: Number(menu[1]) };
-        });
+      const orderListInputs = this.#menuFormatter(await inputView.readMenu());
       const orderList = new OrderList(orderListInputs);
       this.setMenuList(orderList);
     } catch (err) {

@@ -15,20 +15,26 @@ class Waiter {
     outputView.printMenu(this.#visitor.getMenuList());
   }
 
+  #checkPresentEvent() {
+    return this.#planer.getTotalPrice() > WINE_EVENT_MIN_PRICE
+      ? '샴페인 1개'
+      : OUTPUT_MESSAGE.empty;
+  }
+
+  #getEventList() {
+    return this.#planer.getEventList().filter((list) => list.benefit > 0);
+  }
+
+  #getTotalPrice() {
+    return this.#planer.getTotalPrice() - this.#planer.getDiscountTotal();
+  }
+
   printEventPreView() {
     outputView.printDiscountPrevTotal(this.#planer.getTotalPrice());
-    outputView.printWineEvent(
-      this.#planer.getTotalPrice() > WINE_EVENT_MIN_PRICE
-        ? '샴페인 1개'
-        : OUTPUT_MESSAGE.empty
-    );
-    outputView.printEventList(
-      this.#planer.getEventList().filter((list) => list.benefit > 0)
-    );
+    outputView.printWineEvent(this.#checkPresentEvent());
+    outputView.printEventList(this.#getEventList());
     outputView.printDiscountResult(this.#planer.getDiscountTotal());
-    outputView.printTotalPrice(
-      this.#planer.getTotalPrice() - this.#planer.getDiscountTotal()
-    );
+    outputView.printTotalPrice(this.#getTotalPrice());
     outputView.printBadge(this.#planer.getBadge());
   }
 }
