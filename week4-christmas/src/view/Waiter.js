@@ -1,5 +1,6 @@
 import outputView from './OutputView.js';
 import { WINE_EVENT_MIN_PRICE } from '../constants/policy.js';
+import { OUTPUT_MESSAGE } from '../constants/message.js';
 
 class Waiter {
   #visitor;
@@ -18,8 +19,12 @@ class Waiter {
     outputView.printDiscountPrevTotal(this.#planer.getTotalPrice());
     outputView.printWineEvent(
       this.#planer.getTotalPrice() > WINE_EVENT_MIN_PRICE
+        ? '샴페인 1개'
+        : OUTPUT_MESSAGE.empty
     );
-    outputView.printEventList(this.#planer.getEventList());
+    outputView.printEventList(
+      this.#planer.getEventList().filter((list) => list.benefit > 0)
+    );
     outputView.printDiscountResult(this.#planer.getDiscountTotal());
     outputView.printTotalPrice(
       this.#planer.getTotalPrice() - this.#planer.getDiscountTotal()
