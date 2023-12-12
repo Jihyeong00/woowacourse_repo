@@ -17,3 +17,11 @@
 ### 4주차 미션
 
 [크리스마스 프로모션](https://github.com/woowacourse-precourse/javascript-christmas-6)
+
+### 5주차 미션
+
+[다리 건너기](https://github.com/Rki0/javascript-bridge)
+
+### 6주차 미션
+
+[점심 메뉴 추천](https://github.com/Creative-Lee/javascript-menu)
